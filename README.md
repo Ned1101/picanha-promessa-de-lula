@@ -1,6 +1,6 @@
 # Picanha: A Promessa de Lula
 
-![imagem do jogo](https://raw.githubusercontent.com/Ned1101/PicanhaPromessaDeLula/main/Foto_do_jogo%203.jpg?token=GHSAT0AAAAAACGMWIFDL4L4ODCZIVTCVXZYZHSIJFQ)
+![imagem do jogo](https://github.com/Ned1101/picanha-promessa-de-lula/blob/main/Foto_do_jogo%203.jpg)
 
 É um jogo onde um petista sonha com o atual presidente do Brasil, [Luiz Inácio Lula da Silva](https://pt.m.wikipedia.org/wiki/Luiz_In%C3%A1cio_Lula_da_Silva), dando picanha para as pessoas.
 
