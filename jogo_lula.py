@@ -36,9 +36,10 @@ class Player(pygame.sprite.Sprite): # Herdando de uma outra classe, os atributos
 		# Inícializando a classe herdada
 		pygame.sprite.Sprite.__init__(self)
 		# Criando uma lista para armazenar as sprites
-		self.sprites = [pygame.image.load('/storage/emulated/0/Pictures/PixelStation/lula.png')]
-		self.image = self.sprites[0] # Atributos da classe sprite que vai receber o primeiro elemento da lista
+		self.sprite = [pygame.image.load('/storage/emulated/0/Pictures/PixelStation/lula.png')]
+		self.image = self.sprite[0] # Atributos da classe sprite que vai receber o primeiro elemento da lista (o papai lula)
 		self.image = pygame.transform.scale(self.image, (32*7, 32*7)) # Redimencionando o sprite
+		 
 		self.rect = self.image.get_rect()
 		self.rect.topleft = (x, y) # Definindo a posição.
 	
@@ -70,14 +71,14 @@ class Player(pygame.sprite.Sprite): # Herdando de uma outra classe, os atributos
 class Picanha(pygame.sprite.Sprite):
 	def __init__(self):
 		pygame.sprite.Sprite.__init__(self)
-		self.sprites = [pygame.image.load('/storage/emulated/0/Pictures/PixelStation/picanha.png')]
-		self.image = self.sprites[0]
+		self.sprite = [pygame.image.load('/storage/emulated/0/Pictures/PixelStation/picanha.png')]
+		self.image = self.sprite[0]
 		self.image = pygame.transform.scale(self.image, (32*7, 32*7))
 		self.rect = self.image.get_rect()
 		self.rect.topleft = (x, y)
 		
 	# Método para aparecer picanha
-	def lancar_picanha(self, event):
+	def aparecer(self, event):
 		todas_as_sprites.add(self)
 				
 		
@@ -122,21 +123,29 @@ relogio = pygame.time.Clock()
 velocidade = 5
 
 picanha_nao_parada = True
+movimentar_picanha= False
+ativar_posicao_picanha = True
+ativado = False
 
 # Criando o loop infinito e principal do jogo
 while True:
     # Controlando os frames do jogo
-    relogio.tick(45)
+    relogio.tick(60)
     # Limpando a tela e deixando de fundo preto
     tela.fill((0, 0, 0))
+    
+    if ativado:
+    	ativar_posicao_picanha = False
     
     # Passando a posição do lula para a picanha
     if picanha_nao_parada:
 	    x_lula = lula.rect.x
 	    y_lula = lula.rect.y
-    picanha.rect.x = x_lula
-    picanha.rect.y = y_lula
-    
+
+    if ativar_posicao_picanha:
+        picanha.rect.x = x_lula
+        picanha.rect.y = y_lula
+        
     # Loop que verifica se algum evento ocorreu
     for event in pygame.event.get():
         # Condição para fechar o jogo
@@ -147,8 +156,13 @@ while True:
         if event.type == KEYDOWN:
         	lula.andar(event) # Chama o método 'andar' do objeto lula
         	if event.key == K_p:
-        		picanha.lancar_picanha(event)
-        		picanha_nao_parada = False
+        		picanha.aparecer(event)
+        		movimentar_picanha = True
+        		
+    if movimentar_picanha:
+        picanha.rect.x += velocidade
+        picanha_nao_parada = False
+        ativado = True
 		     		
     tela.blit(sprite_fundo_redimensionada, (0, 0))
     todas_as_sprites.update()
