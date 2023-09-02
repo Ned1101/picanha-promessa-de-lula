@@ -11,6 +11,6 @@ Eu tive a ideia de fazer esse jogo quando estava vendo a gameplay do jogo [Fredd
 
 ## Atualizações:
 
-*01/09/2023*
+<sub>01/09/2023</sub>
 1.2 - Após ter sido adicionado o sprite da picanha. Suas posições x e y serão as mesmas do jogodor e quando a tecla 'p' for apertada, a picanha irá aparecer na posição quando a tecla foi apertada.
 obs: a picanha não irá seguir o jogador, como era na versão anterior.
