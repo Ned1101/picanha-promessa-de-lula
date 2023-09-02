@@ -16,7 +16,7 @@ altura = 384
 tela = pygame.display.set_mode((largura, altura))
 
 #sprite de fundo
-fundo = pygame.image.load('/storage/emulated/0/Pictures/PixelStation/fundoJogoLula.png')
+fundo = pygame.image.load('fundoJogoLula.png')
 
 #mudando o tamanho da imagem de fundo
 largura_fundo = 128*6
@@ -36,7 +36,7 @@ class Player(pygame.sprite.Sprite): # Herdando de uma outra classe, os atributos
 		# Inícializando a classe herdada
 		pygame.sprite.Sprite.__init__(self)
 		# Criando uma lista para armazenar as sprites
-		self.sprite = [pygame.image.load('/storage/emulated/0/Pictures/PixelStation/lula.png')]
+		self.sprite = [pygame.image.load('lula.png')]
 		self.image = self.sprite[0] # Atributos da classe sprite que vai receber o primeiro elemento da lista (o papai lula)
 		self.image = pygame.transform.scale(self.image, (32*7, 32*7)) # Redimencionando o sprite
 		 
@@ -71,7 +71,7 @@ class Player(pygame.sprite.Sprite): # Herdando de uma outra classe, os atributos
 class Picanha(pygame.sprite.Sprite):
 	def __init__(self):
 		pygame.sprite.Sprite.__init__(self)
-		self.sprite = [pygame.image.load('/storage/emulated/0/Pictures/PixelStation/picanha.png')]
+		self.sprite = [pygame.image.load('picanha.png')]
 		self.image = self.sprite[0]
 		self.image = pygame.transform.scale(self.image, (32*7, 32*7))
 		self.rect = self.image.get_rect()
@@ -98,11 +98,11 @@ class Npc(pygame.sprite.Sprite):
 # Jogador e todos os npc
 lula = Player()
 picanha = Picanha()
-npc_loira = Npc('/storage/emulated/0/Pictures/PixelStation/npcLula01.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
-npc_petista1 = Npc('/storage/emulated/0/Pictures/PixelStation/npcPetistaFanatico01.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
+npc_loira = Npc('npcLula01.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
+npc_petista1 = Npc('/npcPetistaFanatico01.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
 
 #npc_petista2 =Npc('/storage/emulated/0/Pictures/PixelStation/petistasFanatica01.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
-npc_bolsonarista1 = Npc('/storage/emulated/0/Pictures/PixelStation/npcBolsonarista01.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
+npc_bolsonarista1 = Npc('npcBolsonarista01.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
 '''
 npc_bolsonarista2 = Npc('/storage/emulated/0/Pictures/PixelStation/npcLulaBolsonarista02.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
 npc_morena = Npc('/storage/emulated/0/Pictures/PixelStation/npcLula04.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
