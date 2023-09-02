@@ -16,7 +16,7 @@ altura = 384
 tela = pygame.display.set_mode((largura, altura))
 
 #sprite de fundo
-fundo = pygame.image.load('fundoJogoLula.png')
+fundo = pygame.image.load('/storage/emulated/0/Pictures/PixelStation/fundoJogoLula.png')
 
 #mudando o tamanho da imagem de fundo
 largura_fundo = 128*6
@@ -36,7 +36,7 @@ class Player(pygame.sprite.Sprite): # Herdando de uma outra classe, os atributos
 		# Inícializando a classe herdada
 		pygame.sprite.Sprite.__init__(self)
 		# Criando uma lista para armazenar as sprites
-		self.sprite = [pygame.image.load('lula.png')]
+		self.sprite = [pygame.image.load('/storage/emulated/0/Pictures/PixelStation/lula.png')]
 		self.image = self.sprite[0] # Atributos da classe sprite que vai receber o primeiro elemento da lista (o papai lula)
 		self.image = pygame.transform.scale(self.image, (32*7, 32*7)) # Redimencionando o sprite
 		 
@@ -71,7 +71,7 @@ class Player(pygame.sprite.Sprite): # Herdando de uma outra classe, os atributos
 class Picanha(pygame.sprite.Sprite):
 	def __init__(self):
 		pygame.sprite.Sprite.__init__(self)
-		self.sprite = [pygame.image.load('picanha.png')]
+		self.sprite = [pygame.image.load('/storage/emulated/0/Pictures/PixelStation/picanha.png')]
 		self.image = self.sprite[0]
 		self.image = pygame.transform.scale(self.image, (32*7, 32*7))
 		self.rect = self.image.get_rect()
@@ -98,34 +98,39 @@ class Npc(pygame.sprite.Sprite):
 # Jogador e todos os npc
 lula = Player()
 picanha = Picanha()
-npc_loira = Npc('npcLula01.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
-npc_petista1 = Npc('/npcPetistaFanatico01.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
-
-#npc_petista2 =Npc('/storage/emulated/0/Pictures/PixelStation/petistasFanatica01.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
-npc_bolsonarista1 = Npc('npcBolsonarista01.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
+npc_loira = Npc('/storage/emulated/0/Pictures/PixelStation/npcLula01.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
+npc_petista1 = Npc('/storage/emulated/0/Pictures/PixelStation/npcPetistaFanatico.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
 '''
-npc_bolsonarista2 = Npc('/storage/emulated/0/Pictures/PixelStation/npcLulaBolsonarista02.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
+npc_petista2 =Npc('/storage/emulated/0/Pictures/PixelStation/npcPetistaFanatica.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
+npc_bolsonarista1 = Npc('/storage/emulated/0/Pictures/PixelStation/npcBolsonarista01.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
+npc_bolsonarista2 = Npc('/storage/emulated/0/Pictures/PixelStation/npcBolsonarista02.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
+'''
 npc_morena = Npc('/storage/emulated/0/Pictures/PixelStation/npcLula04.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
 npc_moreno = Npc('/storage/emulated/0/Pictures/PixelStation/npcLula02.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
+'''
 npc_ruiva_falsa = Npc('/storage/emulated/0/Pictures/PixelStation/npcLula03.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
-npc_tio_da_cerveja = Npc('/storage/emulated/0/Pictures/PixelStation/npcLulaTioCerveja01.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
+npc_tio_da_cerveja = Npc('/storage/emulated/0/Pictures/PixelStation/npcTioCerveja.png', posicao_x = random.randint(192, 550), posicao_y = random.randint(0, 200))
 '''
 # Criando um grupo onde irá ficar todas as sprites
 todas_as_sprites = pygame.sprite.Group()
 todas_as_sprites.add(lula) # Adicionando o Lula nas sprites
-todas_as_sprites.add(npc_bolsonarista1)
+#todas_as_sprites.add(npc_morena)
+todas_as_sprites.add(npc_moreno)
+todas_as_sprites.add(npc_loira)
 todas_as_sprites.add(npc_petista1)
 
 #para o frame do jogo
 relogio = pygame.time.Clock()
 
-# Velocidade do movimento da picanha
-velocidade = 5
 
+# Variáveis responsáveis pelo manuseio da picanha, gosto de chama-los de interruptores.
 picanha_nao_parada = True
 movimentar_picanha= False
 ativar_posicao_picanha = True
 ativado = False
+
+# Velocidade do movimento da picanha
+velocidade = 5
 
 # Criando o loop infinito e principal do jogo
 while True:
@@ -137,11 +142,13 @@ while True:
     if ativado:
     	ativar_posicao_picanha = False
     
-    # Passando a posição do lula para a picanha
+    # Se estiver True, é porque a picanha não apareceu na tela e a posição da picanha é a mesma do Lula
     if picanha_nao_parada:
 	    x_lula = lula.rect.x
 	    y_lula = lula.rect.y
-
+	    
+	# Passando a posição do lula para a picanha
+	# Se estiver desligado é porque a picanha apareceu na tela
     if ativar_posicao_picanha:
         picanha.rect.x = x_lula
         picanha.rect.y = y_lula
@@ -169,3 +176,19 @@ while True:
     todas_as_sprites.draw(tela) # Desenhando todas as sprites na tela.
     # Atualizando a tela
     pygame.display.flip()
+    
+'''
+algoritmo que irá fazer os npc aparecer aleatóriamente:
+ele se basea em números aleatorios, cada npc será vinculado a um ou mais números. Se cair o número, o npc vinculados irá aparecer.
+
+petistas = homem[1,3, 10], mulher[13]
+bolsonaristas = homem[2] mulher[22]
+npc loira = 4
+npc moreno = 5
+npc morena = 6
+npc tio da cerveja = 7
+
+ só pode aparecer um total de 3 npc na tela.
+ 
+talvez o algoritmo tenha que ser implementado no grupo de sprites dentro do loop quando for desenhado com várias condições.
+'''
