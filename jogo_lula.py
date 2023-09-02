@@ -78,10 +78,9 @@ class Picanha(pygame.sprite.Sprite):
 		
 	# Método para aparecer picanha
 	def lancar_picanha(self, event):
-		if event.type == KEYDOWN:
-			if event.key  == K_p:
-				todas_as_sprites.add(self)
-
+		todas_as_sprites.add(self)
+				
+		
 # Classe Npc
 class Npc(pygame.sprite.Sprite):
 	def __init__(self, sprite_path, posicao_x, posicao_y):
@@ -119,16 +118,22 @@ todas_as_sprites.add(npc_petista1)
 #para o frame do jogo
 relogio = pygame.time.Clock()
 
+# Velocidade do movimento da picanha
+velocidade = 5
+
+picanha_nao_parada = True
+
 # Criando o loop infinito e principal do jogo
 while True:
     # Controlando os frames do jogo
     relogio.tick(45)
     # Limpando a tela e deixando de fundo preto
     tela.fill((0, 0, 0))
-
-   # Passando a posição do lula para a picanha
-    x_lula = lula.rect.x
-    y_lula = lula.rect.y
+    
+    # Passando a posição do lula para a picanha
+    if picanha_nao_parada:
+	    x_lula = lula.rect.x
+	    y_lula = lula.rect.y
     picanha.rect.x = x_lula
     picanha.rect.y = y_lula
     
@@ -138,15 +143,13 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             exit()
+            
         if event.type == KEYDOWN:
-            lula.andar(event)# Chama o método 'andar' do objeto lula
-            picanha.lancar_picanha(event)
-            if event.key == K_p:
-            		picanha.rect.x += 5
-            
-       #while True:
-            # loop para posição x da picanha ir para fente ate colidir com npc
-            
+        	lula.andar(event) # Chama o método 'andar' do objeto lula
+        	if event.key == K_p:
+        		picanha.lancar_picanha(event)
+        		picanha_nao_parada = False
+		     		
     tela.blit(sprite_fundo_redimensionada, (0, 0))
     todas_as_sprites.update()
     todas_as_sprites.draw(tela) # Desenhando todas as sprites na tela.
