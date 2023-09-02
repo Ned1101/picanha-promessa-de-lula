@@ -18,5 +18,5 @@ Eu tive a ideia de fazer esse jogo quando estava vendo a gameplay do jogo [Fredd
 
 <sub>02/09/2023</sub>
 1.2.3 - Agora a picanha se movimenta na posição x (para frente) depois que ela aparece.
-
+![Lula jogando picanha](https://github.com/Ned1101/picanha-promessa-de-lula/blob/main/Lula_jogando_picanha.gif)
 
