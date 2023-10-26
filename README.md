@@ -2,7 +2,7 @@
 
 ![imagem do jogo](https://github.com/Ned1101/picanha-promessa-de-lula/blob/main/Foto_do_jogo%203.jpg)
 
-É um jogo no qual um petista sonha com o atual presidente do Brasil, (https://pt.m.wikipedia.org/wiki/Luiz_In%C3%A1cio_Lula_da_Silva), distribuindo picanha :cut_of_meat: para as pessoas, conforme havia prometido.
+É um jogo no qual um petista sonha com o atual presidente do Brasil, [Luiz Inácio Lula da Silva](https://pt.m.wikipedia.org/wiki/Luiz_In%C3%A1cio_Lula_da_Silva), distribuindo picanha :cut_of_meat: para as pessoas, conforme havia prometido.
 
 ## Como surgiu a ideia do jogo?
 Eu tive a ideia de fazer este jogo quando estava assistindo uma gameplay do jogo [Freddy Fazbear's Pizzeria Simulator](https://store.steampowered.com/app/738060/Freddy_Fazbears_Pizzeria_Simulator/). 
